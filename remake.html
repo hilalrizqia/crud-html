@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
+    integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/3cf61a2046.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <title>Document</title>
+  <style>
+    @import"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
+    .belanja2 {
+      background-image: url(wood.jpg);
+      color: whitesmoke;
+      text-align: center;
+      padding: 30px;
+      height: 95px;
+      width: 90%;
+      margin: 4px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .kaki {
+      background-color:rgb(19, 45, 116);
+      height: 50px;
+      width: 1600px;
+      padding-left: 20px;
+      padding-top: 9px;
+      color: white;
+      font-size: 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12"
+        style="background-color:rgb(19, 45, 116) ;height: 80px;padding-left: 20px;padding-top: 9px;">
+        <h1 style="color: white;" <i class="fas fa-shopping-cart"></i>Starbhak Mart</h1>
+      </div>
+      <div class="col-4" style="background-color:transparent;height: 600px;">
+        <div class="row">
+
+          <div class="col-12" style="background-color: rgb(73, 163, 236) ;margin-top: 10px;padding: 5px;">
+            <h3 style="text-align: center">Take Away</h3>
+          </div>
+          <div class="col-12" style="background-color: rgb(73, 163, 236) ;margin-top: 10px;padding: 5px;">
+            <h3 style="text-align: center"><i class="fas fa-user-tie" style="float: left"></i>Hilal</h3>
+          </div>
+
+
+          <div class="col-12"
+            style="background-image:url() ;margin-top: 10px;padding: 4px; height: 402px;overflow: auto;">
+            <div class="belanja" id="list"></div>
+          </div>
+          <div class="col-md-6" style="background-color: rgb(73, 163, 236) ;margin-top: 10px;padding: 10px;">Jumlah : <b
+              id="jumlah"></b></div>
+          <div class="col-md-6" style="background-color: rgb(73, 163, 236) ;margin-top: 10px;padding: 10px;">Tax : <b
+              id="tax"></b></div>
+          <div class="col-md-6" style="background-color: rgb(73, 163, 236) ;margin-top: 10px;padding: 10px;">Total
+            Amount : <b id="total"></b></div>
+          <div class="col-md-6" style="background-color: rgb(73, 163, 236) ;margin-top: 10px;padding: 10px;"><button
+              class="btn btn-info">Payment</button>
+            <button class="btn btn-danger" onclick="Delete()">Reset</button>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-8"
+        style="background-color: transparent;height: 665px;padding-left: 10px;overflow: auto;margin-top: 9px;">
+        <nav class="sticky-top">
+          <div class="col-12" style="background-color: white;margin-bottom: 10px;padding: 5px;">
+            <h3>Item List</h3>
+              <i class="fas fa-sort fa-fw" style="float: right;"></i>
+              <i class="fas fa-ellipsis-v fa-fw" style="float: right;"></i>
+              <i class="fas fa-search fa-fw" style="float: right"></i>
+          </div>
+        </nav>
+        <!-- <img src="search.png" width="60px" style="float: right;"> -->
+
+        <div class="card" style="width: 15rem;overflow: auto;float: left;">
+          <img src="mocha2.jpg" title="Es campur" class="card-img-top" alt="..." style="height:137px;">
+          <div class="card-body">
+            <h5 class="card-title">Mocha Latte</h5>
+            <!-- Button trigger modal -->
+            <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+              15000
+            </button></center>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModal1Label"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal1Label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Beli berapa?:</label>
+                        <input type="number" class="form-control" id="jumlahbeli1">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="mochalatte" data-dismiss="modal">Save
+                      changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="width: 15rem;overflow: auto;float: left;">
+          <img src="matcha.jpg" class="card-img-top" alt="..." style="height:137px;">
+          <div class="card-body">
+            <h5 class="card-title">Matcha Latte</h5>
+            <!-- Button trigger modal -->
+            <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+              15000
+            </button></center>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal2Label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Beli berapa?:</label>
+                        <input type="number" class="form-control" id="jumlahbeli2">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="matchalatte" data-dismiss="modal">Save
+                      changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="width: 15rem;overflow: auto;float: left;">
+          <img src="coffe.jpg" class="card-img-top" alt="..." style="height: 137px;">
+          <div class="card-body">
+            <h5 class="card-title">Coffee Latte</h5>
+            <!-- Button trigger modal -->
+            <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">
+              10000
+            </button></center>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal3Label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Beli berapa?:</label>
+                        <input type="number" class="form-control" id="jumlahbeli3">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="coffeelatte" data-dismiss="modal">Save
+                      changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="width: 15rem;overflow: auto;float: left;">
+          <img src="sandwich.jpg" class="card-img-top" alt="..." style="height: 137px;">
+          <div class="card-body">
+            <h5 class="card-title">Sandwich</h5>
+            <!-- Button trigger modal -->
+            <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4">
+              25000
+            </button></center>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModal4Label"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal4Label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Beli berapa?:</label>
+                        <input type="number" class="form-control" id="jumlahbeli4">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="sandwich" data-dismiss="modal">Save
+                      changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="width: 15rem;overflow: auto;float: left;">
+          <img src="burger.jpg" class="card-img-top" alt="..." style="height: 137px;">
+          <div class="card-body">
+            <h5 class="card-title">Burger</h5>
+            <!-- Button trigger modal -->
+            <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal5">
+              25000
+            </button></center>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModal5Label"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal5Label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Beli berapa?:</label>
+                        <input type="number" class="form-control" id="jumlahbeli5">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="burger" data-dismiss="modal">Save
+                      changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="width: 15rem;overflow: auto;float: left;">
+          <img src="kebab.jpg" class="card-img-top" alt="..." style="height:137px;">
+          <div class="card-body">
+            <h5 class="card-title">Kebab</h5>
+            <!-- Button trigger modal -->
+            <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal6">
+              20000
+            </button></center>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal6" tabindex="-1" role="dialog" aria-labelledby="exampleModal6Label"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal6Label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Beli berapa?:</label>
+                        <input type="number" class="form-control" id="jumlahbeli6">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="kebab" data-dismiss="modal">Save
+                      changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="width: 15rem;overflow: auto;float: left;">
+          <img src="spaghetti.jpg" class="card-img-top" alt="..." style="height: 137px;">
+          <div class="card-body">
+            <h5 class="card-title">Spaghetti</h5>
+            <!-- Button trigger modal -->
+            <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal7">
+              30000
+            </button></center>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal7" tabindex="-1" role="dialog" aria-labelledby="exampleModal7Label"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal7Label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Beli berapa?:</label>
+                        <input type="number" class="form-control" id="jumlahbeli7">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="spaghetti" data-dismiss="modal">Save
+                      changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="width: 15rem;overflow: auto;float: left;">
+          <img src="Tacos.jpg" class="card-img-top" alt="..." style="height: 137px;">
+          <div class="card-body">
+            <h5 class="card-title">Tacos</h5>
+            <!-- Button trigger modal -->
+            <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal8">
+              25000
+            </button></center>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal8" tabindex="-1" role="dialog" aria-labelledby="exampleModal8Label"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal8Label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Beli berapa?:</label>
+                        <input type="number" class="form-control" id="jumlahbeli8">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="tacos" data-dismiss="modal">Save
+                      changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="kaki">
+        <p>Ready</p>
+      </footer>
+      <script>
+
+
+        var show = document.getElementById("list");
+        var tharga = document.getElementById("total");
+        var htax = document.getElementById("tax");
+        var jmlh = document.getElementById("jumlah");
+        var dataNama = [];
+        var dataHarga = [];
+        var dataBeli = [];
+
+        function tampil() {
+          awal = 0;
+          show.innerHTML = "";
+          for (var a = 0; a < dataNama.length; a++) {
+            show.innerHTML +=
+              "<div class='belanja2'>" + dataNama[a] + "&nbsp"+ "&nbsp"+ "&nbsp" + "x" + dataBeli[a] + "<br>" + dataHarga[a] +
+              '' + "&nbsp" + '<i class="fas fa-trash fa-2x" style="float: right" onclick="hapus(' + a + ') "></i>'
+            awal += dataHarga[a];
+            jmlh.innerHTML = "Rp " + awal;
+            var tax = awal * 10 / 100;
+            htax.innerHTML = "Rp " + tax;
+            var total = awal + tax;
+            tharga.innerHTML = "Rp " + total;
+          }
+          if (dataHarga.length == 0) {
+            jmlh.innerHTML = "Rp. " + 0;
+            htax.innerHTML = "Rp. " + 0;
+            tharga.innerHTML = "Rp. " + 0;
+          }
+        }
+        function hapus(a) {
+          dataNama.splice(a, 1);
+          dataHarga.splice(a, 1);
+          dataBeli.splice(a, 1);
+          tampil();
+        }
+        function Delete(a) {
+          dataNama.splice(a);
+          dataHarga.splice(a);
+          dataBeli.splice(a);
+          tampil();
+        }
+        $('#spaghetti').click(function () {
+          var nama = "Spaghetti :";
+          var beli =  document.getElementById("jumlahbeli7").value;
+          var harga = 30000 * beli;
+          dataNama.push(nama);
+          dataBeli.push(Number(beli));
+          dataHarga.push(harga);
+          tampil()
+        });
+        $('#tacos').click(function () {
+          var nama = "Tacos :";
+          var beli =  document.getElementById("jumlahbeli8").value;
+          var harga = 25000 * beli;
+          dataNama.push(nama);
+          dataBeli.push(Number(beli));
+          dataHarga.push(harga);
+          tampil()
+        });
+        $('#burger').click(function () {
+          var nama = "Burger :";
+          var beli =  document.getElementById("jumlahbeli5").value;
+          var harga = 25000 * beli;
+          dataNama.push(nama);
+          dataBeli.push(Number(beli));
+          dataHarga.push(harga);
+          tampil()
+        });
+        $('#kebab').click(function () {
+          var nama = "Kebab :";
+          var beli =  document.getElementById("jumlahbeli6").value;
+          var harga = 20000 * beli;
+          dataNama.push(nama);
+          dataBeli.push(Number(beli));
+          dataHarga.push(harga);
+          tampil()
+        });
+        $('#sandwich').click(function () {
+          var nama = "Sandwich :";
+          var beli =  document.getElementById("jumlahbeli4").value;
+          var harga = 25000 * beli;
+          dataNama.push(nama);
+          dataBeli.push(Number(beli));
+          dataHarga.push(harga);
+          tampil()
+        });
+        $('#coffeelatte').click(function () {
+          var nama = "Coffee Latte :";
+          var beli =  document.getElementById("jumlahbeli3").value;
+          var harga = 10000 * beli;
+          dataNama.push(nama);
+          dataBeli.push(Number(beli));
+          dataHarga.push(harga);
+          tampil()
+        });
+        $('#matchalatte').click(function () {
+          var nama = "Matcha Latte :";
+          var beli =  document.getElementById("jumlahbeli2").value;
+          var harga = 15000 * beli;
+          dataNama.push(nama);
+          dataBeli.push(Number(beli));
+          dataHarga.push(harga);
+          tampil()
+        });
+        $('#mochalatte').click(function () {
+          var nama = "Mocha Latte :";
+          var beli =  document.getElementById("jumlahbeli1").value;
+          var harga = 15000 * beli;
+          dataNama.push(nama);
+          dataBeli.push(Number(beli));
+          dataHarga.push(harga);
+          tampil()
+        });
+
+      </script>
+
+</body>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</html>
